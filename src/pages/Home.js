@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 const Home = ({ books, onDelete }) => {
   return (
     <div>
-      <h2 className="mb-4">All Books</h2>
+      <h2>All Books</h2>
       {books.length === 0 ? (
         <Alert variant="info">No books available. Start by adding a new book!</Alert>
       ) : (
         <Row xs={1} md={2} className="g-4">
           {books.map((book) => (
             <Col key={book.id}>
-              <Card className="mb-4">
+              <Card className="card">
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">By {book.author}</Card.Subtitle>

@@ -4,6 +4,9 @@ import { Form, Button, Alert } from 'react-bootstrap';
 const BookForm = ({ onSave, bookToEdit }) => {
   const [title, setTitle] = useState(bookToEdit?.title || '');
   const [author, setAuthor] = useState(bookToEdit?.author || '');
+  const [published_year, setpublished_year] = useState(bookToEdit?.published_year || '');
+  const [genre, setgenre] = useState(bookToEdit?.genre || '');
+  const [description, setdescription] = useState(bookToEdit?.description || '');
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState(null);
 
@@ -52,6 +55,39 @@ const BookForm = ({ onSave, bookToEdit }) => {
             isInvalid={!!errors.author}
           />
           <Form.Control.Feedback type="invalid">{errors.author}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="published_year" className="mb-3">
+          <Form.Label>Published Year</Form.Label>
+          <Form.Control
+            type="integer"
+            value={published_year}
+            onChange={(e) => setpublished_year(e.target.value)}
+            isInvalid={!!errors.published_year}
+          />
+          <Form.Control.Feedback type="invalid">{errors.published_year}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="genre" className="mb-3">
+          <Form.Label>Genre</Form.Label>
+          <Form.Control
+            type="string"
+            value={genre}
+            onChange={(e) => setgenre(e.target.value)}
+            isInvalid={!!errors.genre}
+          />
+          <Form.Control.Feedback type="invalid">{errors.genre}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group controlId="decription" className="mb-3">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            type="text"
+            value={description}
+            onChange={(e) => setdescription(e.target.value)}
+            isInvalid={!!errors.description}
+          />
+          <Form.Control.Feedback type="invalid">{errors.description}</Form.Control.Feedback>
         </Form.Group>
 
         <Button variant="primary" type="submit" className="mt-3">

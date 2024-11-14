@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroup, Button } from 'react-bootstrap';
+import { fetchBooks } from './services/api';
 
-const BookList = ({ books, onEdit, onDelete }) => {
+const BookList = ({ onEdit, onDelete }) => {
+  const [books, setBooks] = useState([]);
+
+  const loadBooks = async () => {
+    try {
+      const data = await fetchBooks(); 
+      setBooks(data); 
+    } catch (error) {
+      console.error('Error loading books:', error);
+    }
+  };
+  
+  useEffect(() => {
+    loadBooks();
+  }, []);
+
   return (
     <div>
       <h2>Book List</h2>

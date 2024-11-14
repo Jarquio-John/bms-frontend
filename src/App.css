@@ -9,17 +9,85 @@ body {
 
 .container {
   max-width: 900px;
+  margin-top: 20px;
 }
 
 .card {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  padding: 15px;
 }
 
-.btn-primary, .btn-danger {
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btn-primary,
+.btn-danger,
+.btn-outline-primary,
+.btn-outline-secondary {
   border-radius: 5px;
+  margin-top: 10px;
 }
 
 .alert {
   border-radius: 5px;
+}
+
+h2, h3 {
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-card {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.loading-text {
+  color: #555;
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Custom Navbar Styling */
+.custom-navbar {
+  background-color: #2c3e50; /* Darker background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+.custom-navbar .navbar-brand {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #f39c12 !important; /* Gold color for brand */
+  font-size: 1.8rem;
+}
+
+.navbar-nav .nav-link-custom {
+  font-family: 'Arial', sans-serif;
+  color: #ecf0f1 !important; /* Light text color for links */
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link-custom:hover {
+  color: #f39c12 !important; /* Hover effect for links */
+  background-color: transparent;
+}
+
+.navbar-nav .nav-link-custom:active {
+  color: #d35400 !important; /* Active state color */
 }

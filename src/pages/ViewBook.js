@@ -1,25 +1,23 @@
 import React from 'react';
-import BookDetails from '../components/BookDetails';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
 
 const ViewBook = ({ books }) => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const book = books.find((book) => book.id === parseInt(id));
 
-  const handleBack = () => {
-    navigate('/');
-  };
+  if (!book) {
+    return <p>Book not found.</p>;
+  }
 
   return (
-    <div>
-      <h2>Book Details</h2>
-      {book ? (
-        <BookDetails book={book} onBack={handleBack} />
-      ) : (
-        <p>Book not found</p>
-      )}
-    </div>
+    <Card>
+      <Card.Body>
+        <Card.Title>{book.title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">By {book.author}</Card.Subtitle>
+        <Button as={Link} to="/" variant="primary">Back to Home</Button>
+      </Card.Body>
+    </Card>
   );
 };
 
