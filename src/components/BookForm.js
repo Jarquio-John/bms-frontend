@@ -5,7 +5,7 @@ const BookForm = ({ onSave, bookToEdit }) => {
   const [title, setTitle] = useState(bookToEdit?.title || '');
   const [author, setAuthor] = useState(bookToEdit?.author || '');
   const [errors, setErrors] = useState({});
-  const [apiError, setApiError] = useState(null); // To display API errors
+  const [apiError, setApiError] = useState(null);
 
   const validate = () => {
     const errors = {};
@@ -21,9 +21,9 @@ const BookForm = ({ onSave, bookToEdit }) => {
 
     try {
       await onSave({ title, author, id: bookToEdit?.id });
-      setApiError(null); // Clear any API errors on success
+      setApiError(null);
     } catch (error) {
-      setApiError("Failed to save the book. Please try again later.");
+      setApiError("Failed to save the book. Please try again.");
     }
   };
 
@@ -32,7 +32,7 @@ const BookForm = ({ onSave, bookToEdit }) => {
       <h3>{bookToEdit ? "Edit Book" : "Add Book"}</h3>
       {apiError && <Alert variant="danger">{apiError}</Alert>}
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="title">
+        <Form.Group controlId="title" className="mb-3">
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
@@ -40,12 +40,10 @@ const BookForm = ({ onSave, bookToEdit }) => {
             onChange={(e) => setTitle(e.target.value)}
             isInvalid={!!errors.title}
           />
-          <Form.Control.Feedback type="invalid">
-            {errors.title}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group controlId="author">
+        <Form.Group controlId="author" className="mb-3">
           <Form.Label>Author</Form.Label>
           <Form.Control
             type="text"
@@ -53,9 +51,7 @@ const BookForm = ({ onSave, bookToEdit }) => {
             onChange={(e) => setAuthor(e.target.value)}
             isInvalid={!!errors.author}
           />
-          <Form.Control.Feedback type="invalid">
-            {errors.author}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">{errors.author}</Form.Control.Feedback>
         </Form.Group>
 
         <Button variant="primary" type="submit" className="mt-3">
